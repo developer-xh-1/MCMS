@@ -680,7 +680,7 @@ DROP TABLE IF EXISTS `mdiy_dict`;
 CREATE TABLE `mdiy_dict`  (
   `dict_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
   `app_id` int(11) NULL DEFAULT NULL COMMENT '应用编号',
-  `dict_value` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '数据值',
+  `dict_value` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '数据值',
   `dict_label` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '标签名',
   `dict_type` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '类型',
   `dict_description` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '描述',
