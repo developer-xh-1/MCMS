@@ -1002,7 +1002,6 @@ INSERT INTO `model` VALUES (151, '新增', '20050002', 109, 'mdiy:dict:save', '2
 INSERT INTO `model` VALUES (152, '删除', '02990002', 7, 'cms:column:del', '2018-06-20 17:53:51', '', 0, 0, 0, '1,7', NULL);
 INSERT INTO `model` VALUES (153, '修改', '02990003', 7, 'cms:column:update', '2018-06-20 17:54:43', NULL, 0, 0, 0, '1,7', NULL);
 INSERT INTO `model` VALUES (154, '新增', '02990004', 7, 'cms:column:save', '2018-06-20 17:55:26', NULL, 0, 0, 0, '1,7', NULL);
-
 -- ----------------------------
 -- Table structure for people
 -- ----------------------------
@@ -1047,6 +1046,35 @@ CREATE TABLE `people_user`  (
   INDEX `pu_people_id`(`pu_people_id`) USING BTREE,
   CONSTRAINT `fk_people_user_people_1` FOREIGN KEY (`pu_people_id`) REFERENCES `people` (`people_id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户基础信息表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for people_address
+-- ----------------------------
+DROP TABLE IF EXISTS `people_address`;
+CREATE TABLE `people_address`  (
+  `PA_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户收货地址自增长Id',
+  `PA_PEOPLE_ID` int(11) NOT NULL COMMENT '对应用户基础信息拓展表的id',
+  `PA_CONSIGNEE_NAME` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '用户收货人姓名',
+  `PA_PROVINCE` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '收货人所在的省',
+  `PA_PROVINCE_ID` bigint(11) DEFAULT 0 COMMENT '省份编号',
+  `PA_CITY` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '收货人所在的市',
+  `PA_CITY_ID` bigint(11) DEFAULT 0 COMMENT '城市编号',
+  `PA_DISTRICT` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '收货人所在区(县)',
+  `PA_DISTRICT_ID` bigint(11) DEFAULT 0 COMMENT '区编号',
+  `PA_STREET` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `PA_STREET_ID` bigint(11) DEFAULT 0 COMMENT '街道编号',
+  `PA_ADDRESS` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '收货人的详细收货地址',
+  `PA_MAIL` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '收货人邮箱',
+  `PA_PHONE` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '收货人手机',
+  `PA_DEFAULT` int(1) DEFAULT 0 COMMENT '是否是收货人最终收货地址。1代表是，0代表不是，默认为0',
+  `PA_APP_ID` int(11) NOT NULL COMMENT '对应的站点id',
+  PRIMARY KEY (`PA_ID`) USING BTREE,
+  INDEX `PA_APP_ID`(`PA_APP_ID`) USING BTREE,
+  INDEX `PA_PEOPLE_ID`(`PA_PEOPLE_ID`) USING BTREE,
+  CONSTRAINT `people_address_ibfk_1` FOREIGN KEY (`PA_PEOPLE_ID`) REFERENCES `people` (`people_id`) ON DELETE CASCADE ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户地址' ROW_FORMAT = Dynamic;
+
+SET FOREIGN_KEY_CHECKS = 1;
 
 -- ----------------------------
 -- Table structure for role
