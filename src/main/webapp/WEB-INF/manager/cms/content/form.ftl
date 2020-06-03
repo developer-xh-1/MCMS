@@ -369,7 +369,7 @@
 
                         var data = JSON.parse(JSON.stringify(that.form));
 
-                        if (data.contentType != null) {
+                        if (data.contentType != null && data.contentType !='') {
                             data.contentType = data.contentType.join(',');
                         }
 
