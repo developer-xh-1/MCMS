@@ -65,6 +65,7 @@
                     <exclude>static/</exclude>
                     <exclude>upload/</exclude>
                     <exclude>templets/</exclude>
+                    <exclude>WEB-INF/</exclude>
                 </excludes>
             </resource>
         </resources>

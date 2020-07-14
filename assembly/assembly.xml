@@ -38,6 +38,10 @@
             <directory>src/main/webapp/upload</directory>
             <outputDirectory>./upload</outputDirectory>
         </fileSet>
+		<fileSet>
+            <directory>src/main/webapp/WEB-INF</directory>
+            <outputDirectory>./lib/WEB-INF</outputDirectory>
+        </fileSet>
         <fileSet>
             <directory>./bin</directory>
             <includes>
