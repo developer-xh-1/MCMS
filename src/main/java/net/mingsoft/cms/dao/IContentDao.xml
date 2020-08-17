@@ -185,7 +185,9 @@
 		</select>
 	<!--条件查询-->
 	<select id="query" resultMap="resultMap">
-		select ct.* from cms_content ct join cms_category cc on ct.content_category_id=cc.id
+		select ct.* from (
+		select ct.* from cms_content ct
+		join cms_category cc on ct.content_category_id=cc.id
 		<where>
 			<if test="contentTitle != null and contentTitle != ''"> and  content_title like CONCAT('%',#{contentTitle},'%')</if>
 			<if test="contentCategoryId != null and contentCategoryId != ''"> and content_category_id=#{contentCategoryId}</if>
@@ -209,7 +211,7 @@
 			<if test="del != null"> and ct.del=#{del} </if>
 			<include refid="net.mingsoft.base.dao.IBaseDao.sqlWhere"></include>
 		</where>
-		order by id desc
+		)ct ORDER BY date_format(ct.content_datetime,'%Y-%m-%d') desc,content_sort desc
 	</select>
 
 	<sql id="queryWhereCategoryId" databaseId="mysql">
