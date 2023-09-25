@@ -1,6 +1,5 @@
-
 <p align="center">
-	<a href="https://ms.mingsoft.net/"><img src="http://ms.mingsoft.net/templets/1/ms/images/logo-blue.png" ></a>
+	<a href="https://www.mingsoft.net/"><img src="http://cdn.mingsoft.net/global/images/logo-blue.png"  width="50" height=""50></a>
 </p>
 <p align="center">
 	<strong>价值源自分享</strong>
@@ -24,16 +23,19 @@
 	
 </p>
 <p align="center">
-	铭飞平台：<a href="https://ms.mingsoft.net">https://ms.mingsoft.net/</a> <br/>
-	演示：<a href="http://demo.cms.mingsoft.net/ms/login.do">http://demo.cms.mingsoft.net/ms/login.do</a><br/>
-	<a href="http://file.mingsoft.net/ms-runner-4.7.2.zip">一键运行版本</a>
+	<a href="https://www.mingsoft.net" target="_blank">铭飞平台</a> 
+	<a href="http://cms.demo.mingsoft.net/ms/login.do"  target="_blank">在线演示</a> 
+	<a href="http://doc.mingsoft.net/mcms/"  target="_blank">在线使用手册</a>
+	<a href="https://mingsoft.ke.qq.com/?tuin=383187f3#tab=1&category=-1" target="_blank">腾讯课堂在线视频</a><br/>
+	<a href="https://ke.qq.com/course/3026403"  target="_blank">代码生成器视频教程</a><br/>
+	<a href="https://cloud.189.cn/t/I3maM3uURjmm"  target="_blank">Windows一键运行版本\Linux一键运行版本</a>
 </p>
 
 -------------------------------------------------------------------------------
 
 很多人说铭飞是大天朝国唯一完整开源的J2EE系统！团队希望看到更多的优秀好用的开源系统，我们一直会努力下去！<br/>
 
-QQ交流群号：[![加入QQ群](https://img.shields.io/badge/一群-231212174-blue.svg)](https://jq.qq.com/?_wv=1027&k=5zykX7V)  [![加入QQ群](https://img.shields.io/badge/二群-221335098-blue.svg)](https://jq.qq.com/?_wv=1027&k=56BqFKu) [![加入QQ群](https://img.shields.io/badge/三群-242805203-blue.svg)](https://jq.qq.com/?_wv=1027&k=5oF19sl)
+QQ交流群号： [![加入QQ群](https://img.shields.io/badge/五群-231211521-blue.svg)](https://jq.qq.com/?_wv=1027&k=5oF19sl) [![加入QQ群](https://img.shields.io/badge/四群-881894877-blue.svg)](https://jq.qq.com/?_wv=1027&k=5oF19sl) [![加入QQ群](https://img.shields.io/badge/一群-231212174-blue.svg)](https://jq.qq.com/?_wv=1027&k=5zykX7V)  [![加入QQ群](https://img.shields.io/badge/二群-221335098-blue.svg)](https://jq.qq.com/?_wv=1027&k=56BqFKu) [![加入QQ群](https://img.shields.io/badge/三群-242805203-blue.svg)](https://jq.qq.com/?_wv=1027&k=5oF19sl)
 
 
 # 开源说明
@@ -85,10 +87,10 @@ git clone https://gitee.com/mingSoft/MCMS.git<br/>
 * IDEA导入，点击 Import Project，选择 pom.xml 文件，点击 Next 按钮，选择 Import Maven projects automatically 复选框，然后一直点击 Next 按钮，直到点击 Finish 按钮，即可成功导入<br/>
 
 4、Eclipse（IDEA）会自动加载 Maven 依赖包，初次加载会比较慢（根据自身网络情况而定），若工程上有小叉号，请打开 Problems 窗口，查看具体错误内容，直到无错误为止<br/>
-5、创建数据库db-mcms-open（数据库使用utf-8编码），导入doc/db-mcms-open-版本号.sql，如果升级现有系统请使用＊-up-*.sql升级，如果导入了系统对应的完整版SQL，sql升级补丁不需要重复导入；<br/>
+5、创建数据库mcms（数据库使用utf-8编码），导入doc/mcms-版本号.sql，如果升级现有系统请使用＊-up-*.sql升级，如果导入了系统对应的完整版SQL，sql升级补丁不需要重复导入；<br/>
 6、修改src\main\resources\application-dev.yml文件中的数据库设置参数；<br/>
 7、运行MSApplication.java main方法<br/>
-8、首先先访问后台地址：http://ip|域名/项目发布名/ms/login.do，管理员账号，用户名：msopen 密码：msopen，进入后台点击内容管理->静态化菜单，进行"生成主页"，"生成栏目","生成文章"操作一遍 （注意！！！是后台登录界面，不是会员中心登录界面）
+8、首先先访问后台地址：http://localhost:8080/ms/login.do，管理员账号，用户名：msopen 密码：msopen，进入后台点击内容管理->静态化菜单，进行"生成主页"，"生成栏目","生成文章"操作一遍 （注意！！！是后台登录界面，不是会员中心登录界面）
 
 
 # 技术选型
@@ -114,23 +116,13 @@ git clone https://gitee.com/mingSoft/MCMS.git<br/>
 
 | 技术 | 名称 | 官网 |
 | :--- | :--- | :--- |
-| vue| 函式库 | [https://cn.vuejs.org//](https://cn.vuejs.org//) |
-| element ui| UI库 | [https://element.eleme.cn/2.0/#/zh-CN](https://element.eleme.cn/2.0/#/zh-CN) |
+| VUE| MVVM框架 | [https://cn.vuejs.org//](https://cn.vuejs.org//) |
+| Element UI| UI库 | [https://element.eleme.cn/2.0/#/zh-CN](https://element.eleme.cn/2.0/#/zh-CN) |
 | jQuery | 函式库 | [http://jquery.com/](http://jquery.com/) |
-| Bootstrap | 前端框架 | [http://getbootstrap.com/](http://getbootstrap.com/) |
-| Bootstrap-table | Bootstrap数据表格 | [http://bootstrap-table.wenzhixin.net.cn/](http://bootstrap-table.wenzhixin.net.cn/) |
-| BootstrapValidator | 表单验证 | [http://bootstrapvalidator.com/](http://bootstrapvalidator.com) |
-| Font-awesome | 字体图标 | [http://fontawesome.io/](http://fontawesome.io/) |
 | Waves | 点击效果插件 | [https://github.com/fians/Waves/](https://github.com/fians/Waves) |
-| zTree | 树插件 | [http://www.treejs.cn/v3/](http://www.treejs.cn/v3/) |
-| Select2 | 选择框插件 | [https://github.com/select2/select2](https://github.com/select2/select2) |
-| Vue | MVVM框架 | [https://cn.vuejs.org/](https://cn.vuejs.org/) |
-| AmazeUI | 移动端UI | [http://amazeui.org/](http://amazeui.org/) |
-| Plupload | 上传控件 | [http://www.plupload.com/](http://www.plupload.com/) |
-| freemarker | 模板引擎 | [http://freemarker.foofun.cn/toc.html](http://freemarker.foofun.cn/toc.html) |
 | validator | 验证库 | [https://github.com/chriso/validator.js](https://github.com/chriso/validator.js) |
 | animate | 动画 | [http://daneden.github.io/animate.css/](http://daneden.github.io/animate.css/) |
-| icon | 矢量小图标\(待更新\) | [http://ms.mingsoft.net/html/86//6048/index.html](http://ms.mingsoft.net/html/86//6048/index.html) |
+| icon | 矢量小图标\(待更新\) | [https://www.iconfont.cn/](https://www.iconfont.cn/) |
 
 
 # 文件说明 
@@ -140,7 +132,7 @@ git clone https://gitee.com/mingSoft/MCMS.git<br/>
 * src/main/webapp
 * src/main/webapp/static 静态资源文件，如：js、css、image、等第三方前端插件库
 * src/main/webapp/html 生成的静态页面，实际项目需要删除，只是提供给开发者快速预览生成后的静态页面
-* src/main/webapp/templets 模版文件夹
+* src/main/webapp/templet 模版文件夹
 * src/main/webapp/upload 上传资源文件夹
 * src/main/webapp/WEB-INF/manager 后端视图页面
 * LICENSE 项目协议说明
@@ -150,8 +142,11 @@ git clone https://gitee.com/mingSoft/MCMS.git<br/>
 
 
 # 文档
-* MCms标签手册 http://doc.ms.mingsoft.net/mcms-tag-guide
-* 快速开发手册 http://doc.ms.mingsoft.net/dev-guide/
+* 使用手册 http://doc.mingsoft.net/mcms/
+
+# 关于版本说明 [更多版本查看](https://www.mingsoft.net/html/default/cms/banben/index.html)
+1. 开源版本永久免费发布源代码，开发者、企业可以终身免费使用，每个月团队会收集开源系统的问题并在每月的28号进行更新；
+2. 企业版本以上更新频率上更快，功能也比开源版本的要多，同时会根据不同版本提供额外插件，不同版本也会提供不同的人工在线服务（服务时间工作日 9:30-17:30）
 
 # 软件截图
 
@@ -184,16 +179,17 @@ git clone https://gitee.com/mingSoft/MCMS.git<br/>
 
 # 铭飞平台
 
+以下功能都可以在平台 https://www.mingsoft.net 上免费使用
 做开源我们是业余的，写代码我们是认真的。研发产品的路上我们一直在探索、一直在学习、一直在用心投入，希望能给更多的企业与开发者提供一些更有价值的服务。
 
 ## 项目管理
 
 <table>
 	<tr>
-		<td><img src="http://ms.mingsoft.net/upload/1/article/1572421127803.gif"/></td>
+		<td><img src="//www.mingsoft.net/upload/1/cms/content/1600746325257.gif"/></td>
 	</tr>
 	<tr>
-		<td><img src="http://ms.mingsoft.net/upload/1/article/1572421308885.gif"/></td>
+		<td><img src="//www.mingsoft.net/upload/1/cms/content/1600746514131.gif"/></td>
 	</tr>	
 </table>
 
@@ -201,10 +197,10 @@ git clone https://gitee.com/mingSoft/MCMS.git<br/>
 
 <table>
 	<tr>
-		<td><img src="http://ms.mingsoft.net/upload/1/article/1572419454270.gif"/></td>
+		<td><img src="//www.mingsoft.net/upload/1/cms/content/1600746629646.gif"/></td>
 	</tr>
 	<tr>
-		<td><img src="http://ms.mingsoft.net/upload/1/article/1572419347761.gif"/></td>
+		<td><img src="//www.mingsoft.net/upload/1/cms/content/1600746692814.gif"/></td>
 	</tr>	
 </table>
 

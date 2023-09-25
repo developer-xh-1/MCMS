@@ -1,6 +1,6 @@
 /**
-The MIT License (MIT) * Copyright (c) 2019 铭飞科技
-
+ * The MIT License (MIT)
+ * Copyright (c) 2012-2022 铭软科技(mingsoft.net)
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
  * the Software without restriction, including without limitation the rights to
@@ -19,19 +19,28 @@ The MIT License (MIT) * Copyright (c) 2019 铭飞科技
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+
+
+
 package net.mingsoft.cms.biz.impl;
 
-import net.mingsoft.basic.util.BasicUtil;
-import net.mingsoft.cms.bean.ContentBean;
-import net.mingsoft.mdiy.entity.ModelEntity;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import net.mingsoft.base.biz.impl.BaseBizImpl;
 import net.mingsoft.base.dao.IBaseDao;
-import java.util.*;
-import net.mingsoft.cms.entity.ContentEntity;
+import net.mingsoft.cms.bean.CategoryBean;
+import net.mingsoft.cms.bean.ContentBean;
 import net.mingsoft.cms.biz.IContentBiz;
+import net.mingsoft.cms.dao.ICategoryDao;
 import net.mingsoft.cms.dao.IContentDao;
+import net.mingsoft.cms.entity.ContentEntity;
+import net.mingsoft.mdiy.entity.ModelEntity;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * 文章管理持久化层
@@ -40,13 +49,25 @@ import net.mingsoft.cms.dao.IContentDao;
  * 历史修订：<br/>
  */
  @Service("cmscontentBizImpl")
-public class ContentBizImpl extends BaseBizImpl implements IContentBiz {
+public class ContentBizImpl  extends BaseBizImpl<IContentDao, ContentEntity> implements IContentBiz {
 
-	
+	/*
+	 * log4j日志记录
+	 */
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
+
 	@Autowired
 	private IContentDao contentDao;
-	
-	
+	/**
+	 * 栏目管理业务层
+	 */
+	@Autowired
+	private ICategoryDao categoryDao;
+
+	@Value("${ms.html-dir:html}")
+	private String htmlDir;
+
+
 	@Override
 	protected IBaseDao getDao() {
 		// TODO Auto-generated method stub
@@ -54,12 +75,8 @@ public class ContentBizImpl extends BaseBizImpl implements IContentBiz {
 	}
 
 	@Override
-	public List<ContentBean> queryIdsByCategoryIdForParser(String categoryId, String beginTime, String endTime) {
-		return this.contentDao.queryIdsByCategoryIdForParser(categoryId,BasicUtil.getAppId(), beginTime, endTime,null,null);
-	}
-	@Override
-	public List<ContentBean> queryIdsByCategoryIdForParser(String categoryId, String beginTime, String endTime, String orderBy, String order) {
-		return this.contentDao.queryIdsByCategoryIdForParser(categoryId, BasicUtil.getAppId(), beginTime, endTime,orderBy,order);
+	public List<CategoryBean> queryIdsByCategoryIdForParser(ContentBean contentBean) {
+		return this.contentDao.queryIdsByCategoryIdForParser(contentBean);
 	}
 
 	@Override
@@ -69,4 +86,6 @@ public class ContentBizImpl extends BaseBizImpl implements IContentBiz {
 		}
 		return contentDao.getSearchCount(null,null,whereMap, appId,categoryIds);
 	}
+
+
 }

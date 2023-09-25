@@ -2,35 +2,7 @@
 <head>
   <meta charset="utf-8" />
   <title>后台主界面</title>
-  <meta http-equiv="content-type" content="text/html" />
-  <META HTTP-EQUIV="Pragma" CONTENT="no-cache" />
-  <meta name="viewport"
-        content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width"/>
-  <meta name="format-detection" content="telephone=no"/>
-  <meta name="app-mobile-web-app-capable" content="yes"/>
-  <meta name="app-mobile-web-app-status-bar-style" content="black-translucent"/>
-  <script src="${base}/static/plugins/vue/2.6.9/vue.min.js"></script>
-  <!--通用图标-->
-  <link rel="stylesheet" href="${base}/static/ms-admin/5.0.0/iconfont/iconfont.css" />
-  <script src="${base}/static/plugins/element-ui/2.12.0/index.js"></script>
-  <link rel="stylesheet" href="${base}/static/plugins/element-ui/2.12.0/index.css" />
-  <!--网络请求框架-->
-  <script src="${base}/static/plugins/axios/0.18.0/axios.min.js"></script>
-  <script src="${base}/static/plugins/qs/6.6.0/qs.min.js"></script>
-  <!--铭飞-->
-  <script src="${base}/static/plugins/ms/1.0.0/ms.js"></script>
-  <script src="${base}/static/plugins/ms/1.0.0/ms.http.js"></script>
-  <script src="${base}/static/plugins/ms/1.0.0/ms.util.js"></script>
-  <link rel="stylesheet" href="${base}/static/plugins/minireset/0.0.2/minireset.min.css" />
-  <script>
-    ms.base = '${base}';
-    ms.manager = '${managerPath}';
-  </script>
-  <style>
-    [v-cloak]{
-      display: none;
-    }
-  </style>
+  <#include "../../include/head-file.ftl">
 </head>
 <body class="custom-body">
 <div id="app" v-cloak>
@@ -43,111 +15,26 @@
         </div>
         <div  class="class-6" >
         </div>
-        <div  class="class-7" >
-          <div  class="class-8" >
-            <div class="class-9">
+        <div  class="panel" style="min-height:200px;">
+        <div   class="panel-title" style="display:inline;">
               常用功能
+              <el-tooltip effect="dark" content="鼠标移至上方功能大全，点击菜单右侧五角星即可添加到常用功能。" placement="left">
+            <i class="el-icon-question"></i>
+          </el-tooltip>
             </div>
-          </div>
-          <div  class="class-10" >
-            <div @click="jumpArtcleManager"
-                 class="class-11" >
-              <div  class="class-12" >
-                <!--图片开始-->
-                <img
-                        src="${base}/static/ms-admin/5.0.0/images/1578362848002.png"
-                        class="class-13" />
-                <!--图片结束-->
-              </div>
-              <div class="class-14">
-                文章管理
-              </div>
-            </div>
-            <div  @click="jumpCategorymanager" class="class-15" >
-              <div  class="class-16" >
-                <!--图片开始-->
-                <img
-                        src="${base}/static/ms-admin/5.0.0/images/1578363219309.png"
-                        class="class-17" />
-                <!--图片结束-->
-              </div>
-              <div class="class-18">
-                栏目管理
+            <div class="v-space"></div>
+            <div class="panel-content" style="flex-direction: row;flex-wrap: wrap; flex: unset;margin-top:20px;">
+              <div class="mitem"
+                   @click="window.parent.indexVue.openParentMenuInTitle(item.title)"
+                   v-for="item in alwaysList">
+                <!--图标开始-->
+                <i :class="['iconfont',item.icon]"></i>
+                <div class="item-title">
+                  {{ item.title }}
+                </div>
+                <!--文本结束-->
               </div>
             </div>
-            <div  @click="jumpStaticManager" class="class-19" >
-              <div  class="class-20" >
-                <!--图片开始-->
-                <img
-                        src="${base}/static/ms-admin/5.0.0/images/1578363549912.png"
-                        class="class-21" />
-                <!--图片结束-->
-              </div>
-              <div class="class-22">
-                静态化
-              </div>
-            </div>
-            <div  @click="jumpAdmininstatorManager" class="class-23" >
-              <div  class="class-24" >
-                <!--图片开始-->
-                <img
-                        src="${base}/static/ms-admin/5.0.0/images/1578363754088.png"
-                        class="class-25" />
-                <!--图片结束-->
-              </div>
-              <div class="class-26">
-                管理员管理
-              </div>
-            </div>
-            <div  @click="jumpUserManager" class="class-27" >
-              <div  class="class-28" >
-                <!--图片开始-->
-                <img
-                        src="${base}/static/ms-admin/5.0.0/images/1578364450652.png"
-                        class="class-29" />
-                <!--图片结束-->
-              </div>
-              <div class="class-30">
-                角色管理
-              </div>
-            </div>
-            <div  @click="jumpMenuManager" class="class-31" >
-              <div  class="class-32" >
-                <!--图片开始-->
-                <img
-                        src="${base}/static/ms-admin/5.0.0/images/1578363880431.png"
-                        class="class-33" />
-                <!--图片结束-->
-              </div>
-              <div class="class-34">
-                菜单管理
-              </div>
-            </div>
-            <div  @click="jumpTemplateManager" class="class-35" >
-              <div  class="class-36" >
-                <!--图片开始-->
-                <img
-                        src="${base}/static/ms-admin/5.0.0/images/1578363998984.png"
-                        class="class-37" />
-                <!--图片结束-->
-              </div>
-              <div class="class-38">
-                模板管理
-              </div>
-            </div>
-            <div  @click="jumpApplicationManager" class="class-39" >
-              <div  class="class-40" >
-                <!--图片开始-->
-                <img
-                        src="${base}/static/ms-admin/5.0.0/images/1578364095317.png"
-                        class="class-41" />
-                <!--图片结束-->
-              </div>
-              <div class="class-42">
-                应用设置
-              </div>
-            </div>
-          </div>
         </div>
         <!--大容器开始-->
         <div  class="class-43" >
@@ -234,7 +121,7 @@
           <div  class="class-66" >
             <!--图片开始-->
             <img
-                    src="${base}/static/ms-admin/5.0.0/images/1577687056305.png"
+                    src="https://cdn.mingsoft.net/images/icon-qq.png"
                     class="class-67" />
             <!--图片结束-->
           </div>
@@ -251,7 +138,7 @@
           <div  class="class-72" >
             <!--图片开始-->
             <img
-                    src="${base}/static/ms-admin/5.0.0/images/1577687056305.png"
+                    src="https://cdn.mingsoft.net/images/icon-qq.png"
                     class="class-73" />
             <!--图片结束-->
           </div>
@@ -268,7 +155,7 @@
           <div  class="class-78" >
             <!--图片开始-->
             <img
-                    src="${base}/static/ms-admin/5.0.0/images/1577687056305.png"
+                    src="https://cdn.mingsoft.net/images/icon-qq.png"
                     class="class-79" />
             <!--图片结束-->
           </div>
@@ -285,7 +172,7 @@
           <div  class="class-84" >
             <!--图片开始-->
             <img
-                    src="${base}/static/ms-admin/5.0.0/images/1577687056305.png"
+                    src="https://cdn.mingsoft.net/images/icon-qq.png"
                     class="class-85" />
             <!--图片结束-->
           </div>
@@ -385,7 +272,7 @@
               <div  class="class-126" >
                 <!--图片开始-->
                 <img
-                        src="${base}/static/ms-admin/5.0.0/images/1577687023678.png"
+                        src="https://cdn.mingsoft.net/images/icon-telephone.png"
                         class="class-127" />
                 <!--图片结束-->
               </div>
@@ -402,7 +289,7 @@
               <div  class="class-132" >
                 <!--图片开始-->
                 <img
-                        src="${base}/static/ms-admin/5.0.0/images/1577687056305.png"
+                        src="https://cdn.mingsoft.net/images/icon-qq.png"
                         class="class-133" />
                 <!--图片结束-->
               </div>
@@ -427,94 +314,193 @@
 <script>
   var app = new Vue({
     el: '#app',
-    watch:{
-
-    },
+    watch: {},
     data: {
-      base:ms.base,
+      base: ms.base,
       msNewsLast: '',
-      msNewsPath: ''
+      msNewsPath: '',
+      alwaysList: [], //常用功能列表
     },
     methods: {
-      jumpArtcleManager(){
-        window.parent.indexVue.openMenu({modelId:706,modelTitle:'文章管理',modelIcon: "icon-neirongguanli"});
+      jumpArtcleManager: function () {
+        window.parent.indexVue.openMenu({
+          modelId: 706,
+          modelTitle: '文章管理',
+          modelIcon: "icon-neirongguanli"
+        });
       },
       //栏目管理
-      jumpCategorymanager(){
-        window.parent.indexVue.open({"modelId":708,"modelTitle":"栏目管理","modelModelId":706,"modelUrl":"cms/category/index.do"});
+      jumpCategorymanager: function () {
+        window.parent.indexVue.open({
+          "modelId": 708,
+          "modelTitle": "栏目管理",
+          "modelId": 706,
+          "modelUrl": "cms/category/index.do"
+        });
       },
       //静态化
-      jumpStaticManager(){
-        window.parent.indexVue.open({"modelId":709,"modelTitle":"静态化","modelModelId":706,"modelUrl":"cms/generate/index.do"});
+    jumpStaticManager: function () {
+        window.parent.indexVue.open({"modelId":709,"modelTitle":"静态化","modelId":706,"modelUrl":"cms/generate/index.do"});
       },
       //管理员管理
-      jumpAdmininstatorManager(){
-        window.parent.indexVue.open({"modelId":411,"modelTitle":"管理员管理","modelModelId":23,"modelUrl":"basic/manager/index.do"});
-
+      jumpAdmininstatorManager: function () {
+        window.parent.indexVue.open({
+          "modelId": 411,
+          "modelTitle": "管理员管理",
+          "modelId": 23,
+          "modelUrl": "basic/manager/index.do"
+        });
       },
       //角色管理
-      jumpUserManager(){
-        window.parent.indexVue.open({"modelId":406,"modelTitle":"角色管理","modelModelId":23,"modelUrl":"basic/role/index.do"});
+      jumpUserManager: function () {
+        window.parent.indexVue.open({
+          "modelId": 406,
+          "modelTitle": "角色管理",
+          "modelId": 23,
+          "modelUrl": "basic/role/index.do"
+        });
       },
       //菜单管理
-      jumpMenuManager(){
-        window.parent.indexVue.open({"modelId":183,"modelTitle":"菜单管理","modelModelId":23,"modelUrl":"model/index.do"});
+      jumpMenuManager: function () {
+        window.parent.indexVue.open({
+          "modelId": 183,
+          "modelTitle": "菜单管理",
+          "modelId": 23,
+          "modelUrl": "model/index.do"
+        });
+      },
+      getAlwaysList: function () {
+        var markList = localStorage.getItem("markList");
+        if (markList) {
+          this.alwaysList = JSON.parse(markList)
+        }
       },
       //模板管理
-      jumpTemplateManager(){
-        window.parent.indexVue.open({"modelId":87,"modelTitle":"模板管理","modelModelId":84,"modelUrl":"template/index.do"});
-
+      jumpTemplateManager: function () {
+        window.parent.indexVue.open({
+          "modelId": 87,
+          "modelTitle": "模板管理",
+          "modelId": 84,
+          "modelUrl": "template/index.do"
+        });
+      },
+      setCallBackFun: function () {
+        window.parent.indexVue.addCallBackFun(this.getAlwaysList);
       },
       //应用管理
-      jumpApplicationManager(){
-        window.parent.indexVue.open({"modelId":86,"modelTitle":"应用管理","modelModelId":84,"modelUrl":"app/-1/edit.do"});
-
+      jumpApplicationManager: function () {
+        window.parent.indexVue.open({
+          "modelId": 86,
+          "modelTitle": "应用管理",
+          "modelId": 84,
+          "modelUrl": "app/-1/edit.do"
+        });
       },
       //铭飞开发文档
-      jumpMCMSDocument(){
-        window.open("http://doc.ms.mingsoft.net/plugs-cms/");
-
+      jumpMCMSDocument: function () {
+        window.open("http://doc.mingsoft.net/plugs-cms/");
       },
-      enterQQOneGroup(){
+      enterQQOneGroup: function () {
         window.open("https://shang.qq.com/wpa/qunwpa?idkey=ebf251dc9758de6b9c78c499956431cba73e28b3f0b72c0fc28242e98b20fca2");
-
       },
-      enterQQTwoGroup(){
+      enterQQTwoGroup: function () {
         window.open("http://shang.qq.com/wpa/qunwpa?idkey=cfb32b0f47d89d7ef1c3a9493984d4ffbdfe14049fdedd90c517a072e90d68b9");
-
       },
-      enterQQThreeGroup(){
+      enterQQThreeGroup: function () {
         window.open("http://shang.qq.com/wpa/qunwpa?idkey=5dd11fdb492c4ded090fa1f78a166583978e33c4a61301b136d31e9e3eb7df72");
-
       },
-      enterQQFourGroup(){
+      enterQQFourGroup: function () {
         window.open("http://shang.qq.com/wpa/qunwpa?idkey=565f1e4c4fabeee42947f6c6b96ac7ca4853dece16559d3d78e944ca2931b7f5");
-
       },
-      addBusinessQQ(){
+      addBusinessQQ: function () {
         window.open("http://wpa.qq.com/msgrd?v=3&uin=3336073455&site=qq&menu=yes");
-
       },
       //打开铭飞消息页面
-      openMCMSNews(){
+      openMCMSNews: function () {
         window.open(this.msNewsPath);
       },
-      getNewsLast(){
+      getNewsLast: function () {
         var that = this;
         axios.create({
           withCredentials: true
-        }).get("https://ms.mingsoft.net/cms/content/list.do?contentCategoryId=202").then(function (res){
+        }).post("https://mingsoft.net/cms/content/list.do?categoryId=202").then(function (res) {
           that.msNewsLast = res.data.data.rows[0].contentTitle.toString();
-          that.msNewsPath = 'https://ms.mingsoft.net/html/1/203/202/'+res.data.data.rows[0].id+'.html'
-        })
+          that.msNewsPath = 'https://mingsoft.net/html/1/203/202/' + res.data.data.rows[0].id + '.html';
+        });
+        this.setCallBackFun();
       }
     },
-    created(){
-      this.getNewsLast()
+    created: function () {
+      this.getNewsLast();
+      this.getAlwaysList();
     }
-  })
+  });
 </script>
 <style>
+  .panel {
+    margin-top:10px;
+    color: #333333;
+    padding-right:20px;
+    padding-top:20px;
+    max-width:100%;
+    padding-left:20px;
+    outline-offset: -1px;
+    background-color: rgba(255, 255, 255, 1);
+    flex-direction: column;
+    display: flex;
+    animation-duration: 1s;
+    background-repeat: no-repeat;
+  }
+  .panel .panel-content .mitem:hover i ,.panel .panel-content .mitem:hover .item-title{
+    color:#409EFF
+  }
+  .panel-content .mitem i {
+    font-size: 40px;
+  }
+  .panel-content .mitem {
+    color: #333333;
+    cursor: pointer;
+    outline-offset: -1px;
+    max-width:100%;
+    flex-direction: column;
+    display: flex;
+    animation-duration: 1s;
+    width: 25%;
+    background-repeat: no-repeat;
+    align-items: center;
+    margin-bottom:20px;
+  }
+  .panel .panel-title {
+    color: #333333;
+    word-wrap: break-word;
+    font-weight: bold;
+    display: inline-block;
+    animation-duration: 1s;
+    font-size: 16px;
+  }
+  .panel .panel-content {
+    color: #333333;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    outline-offset: -1px;
+    flex: 1;
+    padding-top: 10px;
+    max-width: 100%;
+    flex-direction: column;
+    display: flex;
+    animation-duration: 1s;
+    width: 100%;
+    padding-left: 10px;
+    background-repeat: no-repeat;
+  }
+  .panel .panel-content .mitem .item-title{
+    color:#333333;
+    word-wrap:break-word;
+    display:inline-block;
+    animation-duration:1s;
+    font-size:14px;
+    line-height:1.4;
+  }
   .custom-body {
   }
   .class-1
@@ -1078,7 +1064,7 @@
   .class-44
   {
     color:#333333;
-    background-image:url(${base}/static/ms-admin/5.0.0/images/1578104008987.png);
+    background-image:url(https://cdn.mingsoft.net/images/mmall.png);
     outline:none;
     outline-offset:-1px;
     background-size:cover;
@@ -1120,7 +1106,7 @@
   .class-47
   {
     color:#333333;
-    background-image:url(${base}/static/ms-admin/5.0.0/images/1578367666376.png);
+    background-image:url(https://cdn.mingsoft.net/images/weixin.png);
     outline:none;
     outline-offset:-1px;
     background-size:cover;
@@ -1162,7 +1148,7 @@
   .class-50
   {
     color:#333333;
-    background-image:url(${base}/static/ms-admin/5.0.0/images/1578366770290.png);
+    background-image:url(https://cdn.mingsoft.net/images/mapp.png);
     outline:none;
     outline-offset:-1px;
     background-size:cover;
@@ -1204,7 +1190,7 @@
   .class-53
   {
     color:#333333;
-    background-image:url(${base}/static/ms-admin/5.0.0/images/1578368816112.png);
+    background-image:url(https://cdn.mingsoft.net/images/secondaryDevelopment.png);
     outline:none;
     outline-offset:-1px;
     background-size:cover;
@@ -1290,7 +1276,7 @@
   .class-59
   {
     color:#333333;
-    background-image:url(${base}/static/ms-admin/5.0.0/images/1577257489392.png);
+    background-image:url(https://cdn.mingsoft.net/images/icon-voice.png);
     outline:none;
     outline-offset:-1px;
     background-size:contain;
@@ -1336,7 +1322,7 @@
   .class-62
   {
     color:#333333;
-    background-image:url(${base}/static/ms-admin/5.0.0/images/1577151868190.png);
+    background-image:url(https://cdn.mingsoft.net/images/icon-file.png);
     outline:none;
     outline-offset:-1px;
     height:40px;
@@ -1752,7 +1738,7 @@
   .class-96
   {
     color:#333333;
-    background-image:url(${base}/static/ms-admin/5.0.0/images/1578031206821.png);
+    background-image:url(https://cdn.mingsoft.net/images/icon-menu.png);
     outline:none;
     outline-offset:-1px;
     background-size:contain;
@@ -1796,7 +1782,7 @@
   .class-99
   {
     color:#333333;
-    background-image:url(${base}/static/ms-admin/5.0.0/images/1578031321635.png);
+    background-image:url(https://cdn.mingsoft.net/images/icon-approve.png);
     outline:none;
     outline-offset:-1px;
     background-size:contain;
@@ -1840,7 +1826,7 @@
   .class-102
   {
     color:#333333;
-    background-image:url(${base}/static/ms-admin/5.0.0/images/1578031484700.png);
+    background-image:url(https://cdn.mingsoft.net/images/icon-office.png);
     outline:none;
     outline-offset:-1px;
     background-size:contain;
@@ -1884,7 +1870,7 @@
   .class-105
   {
     color:#333333;
-    background-image:url(${base}/static/ms-admin/5.0.0/images/1578031264207.png);
+    background-image:url(https://cdn.mingsoft.net/images/icon-remote.png);
     outline:none;
     outline-offset:-1px;
     background-size:contain;
@@ -1928,7 +1914,7 @@
   .class-108
   {
     color:#333333;
-    background-image:url(${base}/static/ms-admin/5.0.0/images/1578031682848.png);
+    background-image:url(https://cdn.mingsoft.net/images/icon-voiceAssistance.png);
     outline:none;
     outline-offset:-1px;
     background-size:contain;
@@ -1972,7 +1958,7 @@
   .class-111
   {
     color:#333333;
-    background-image:url(${base}/static/ms-admin/5.0.0/images/1578031639173.png);
+    background-image:url(https://cdn.mingsoft.net/images/icon-vip.png);
     outline:none;
     outline-offset:-1px;
     background-size:contain;
@@ -2016,7 +2002,7 @@
   .class-114
   {
     color:#333333;
-    background-image:url(${base}/static/ms-admin/5.0.0/images/1578031215338.png);
+    background-image:url(https://cdn.mingsoft.net/images/icon-invoice.png);
     outline:none;
     outline-offset:-1px;
     background-size:contain;
@@ -2060,7 +2046,7 @@
   .class-117
   {
     color:#333333;
-    background-image:url(${base}/static/ms-admin/5.0.0/images/1578031228196.png);
+    background-image:url(https://cdn.mingsoft.net/images/icon-authorize.png);
     outline:none;
     outline-offset:-1px;
     background-size:contain;
@@ -2104,7 +2090,7 @@
   .class-120
   {
     color:#333333;
-    background-image:url(${base}/static/ms-admin/5.0.0/images/1578031234719.png);
+    background-image:url(https://cdn.mingsoft.net/images/icon-letterOfAuthorization.png);
     outline:none;
     outline-offset:-1px;
     background-size:contain;
